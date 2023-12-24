@@ -20,7 +20,7 @@ const loginCtrl = async (req, res) => {
     } catch (error) {
         httpError(res, error)
     }
-} 
+}
 
 const registerCtrl = async  (req, res) => {
     try {

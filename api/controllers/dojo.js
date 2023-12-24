@@ -27,6 +27,10 @@ const viewDojo = async (req, res) => {
    /* TODO: obtener un dojo en especifico para la vista de dojo */
 };
 
+
+
+
+
 module.exports = {
     getAllDojos,
     createDojo
