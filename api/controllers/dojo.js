@@ -29,8 +29,6 @@ const viewDojo = async (req, res) => {
 
 
 
-
-
 module.exports = {
     getAllDojos,
     createDojo

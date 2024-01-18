@@ -28,7 +28,6 @@ const enrollUser = async (req, res) => {
   try {
     const { userID , classID , enrollmentType } = req.body;
     const result = await enrollModel.create({ userID , classID , enrollmentType });
-
     res.send({result})
   }catch(err) {
     httpError(res,err);

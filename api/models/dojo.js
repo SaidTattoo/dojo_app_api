@@ -16,7 +16,7 @@ const dojoSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'user',
         required: true
-    }
+    },
     // Referencia al modelo User para el administrador del Dojo
 
 }, {
