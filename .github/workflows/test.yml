@@ -5,7 +5,7 @@ on:
 
 jobs:
   run-ls:
-    runs-on: test-runner-api
+    runs-on: self-hosted
     steps:
     - name: Clonar repositorio
       uses: actions/checkout@v2
