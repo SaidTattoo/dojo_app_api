@@ -11,7 +11,7 @@ jobs:
       run: echo $PATH
     - name: Ejecutar comando LS v2
       run: |
-        cd ../../../../../
+        cd ../../../../
         ls -l
     - name: Extraer versión del mensaje de commit
       run: |
