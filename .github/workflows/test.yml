@@ -7,8 +7,7 @@ jobs:
   run-ls:
     runs-on: ubuntu-latest
     steps:
-    - name: Clonar repositorio
-      uses: actions/checkout@v2
+
     - name: Ejecutar comando LS v2
       run: ls -l
     - name: Extraer versión del mensaje de commit
