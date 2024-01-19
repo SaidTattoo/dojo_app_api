@@ -17,6 +17,8 @@ jobs:
         ls -l
     - name: Imprimir mensaje del último commit
       run: git log -1 --pretty=%B
+    - name: Imprimir historial de commits
+      run: git log --pretty=oneline -n 5
     - name: Imprimir la rama actual y el último mensaje de commit
       run: |
         echo "Rama actual: $(git branch --show-current)"
