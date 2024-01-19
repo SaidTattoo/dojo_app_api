@@ -11,9 +11,9 @@ jobs:
     steps:
     - name: Imprimir PATH
       run: echo $PATH
-    - name: Ejecutar comando LS v2 s
+    - name: Ejecutar comando LS v2
       run: |
-        cd ~/Escritorio/deploy
+        cd ~/Escritorio/deploy2
         ls -l
     - name: Imprimir mensaje del último commit
       run: git log -1 --pretty=%B
