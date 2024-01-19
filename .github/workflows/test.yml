@@ -24,5 +24,5 @@ jobs:
           echo "$VERSION_TAG"
           exit 1
         fi
-        FILE_PATH=~/Escritorio/deploy/docker-compose.yml 
+        FILE_PATH=~/Escritorio/deploy/docker-compose.yml
         sed -i "s|image: gcr.io/road-321321/sigmamx:v.*|image: gcr.io/road-321321/sigmamx:$VERSION_TAG|g" "$FILE_PATH"
