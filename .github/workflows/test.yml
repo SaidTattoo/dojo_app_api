@@ -11,14 +11,12 @@ jobs:
     steps:
     - name: Imprimir PATH
       run: echo $PATH
-    - name: Ejecutar comando LS v2
+    - name: Imprimir mensaje de commit y comprobar versión
       run: |
-        cd ~/Escritorio/deploy
-        ls -l
-    - name: Imprimir mensaje del último commit
-      run: git log -1 --pretty=%B
-    - name: Imprimir historial de commits
-      run: git log --pretty=oneline -n 5
+        echo "Mensaje de commit:"
+        git log -1 --pretty=%B
+        echo "Versión extraída:"
+        git log -1 --pretty=%B | grep -oE 'v[0-9]+\.[0-9]+\.[0-9]+'
     - name: Imprimir la rama actual y el último mensaje de commit
       run: |
         echo "Rama actual: $(git branch --show-current)"
