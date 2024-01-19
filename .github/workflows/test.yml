@@ -5,7 +5,7 @@ on:
 
 jobs:
   run-ls:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     steps:
     - name: Clonar repositorio
       uses: actions/checkout@v2
