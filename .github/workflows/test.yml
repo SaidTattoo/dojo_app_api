@@ -16,6 +16,6 @@ jobs:
     - name: Extraer versión del mensaje de commit
       run: |
         VERSION_TAG=$(git log -1 --pretty=%B | grep -oE 'v[0-9]+\.[0-9]+\.[0-9]+')
-        FILE_PATH=/docker-compose.yml # Actualiza esta ruta
+        FILE_PATH= ~/Escritorio/deploy/docker-compose.yml 
         sed -i "s|image: gcr.io/road-321321/sigmamx:v.*|image: gcr.io/road-321321/sigmamx:${VERSION_TAG}|g" "${FILE_PATH}"
 
