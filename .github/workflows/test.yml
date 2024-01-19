@@ -32,3 +32,8 @@ jobs:
         fi
         FILE_PATH=~/Escritorio/deploy/docker-compose.yml
         sed -i "s|image: gcr.io/road-321321/sigmamx:v.*|image: gcr.io/road-321321/sigmamx:$VERSION_TAG|g" "$FILE_PATH"
+    - name: Iniciar servicios con Docker Compose
+      run: |
+        docker-compose -f ~/Escritorio/deploy/docker-compose.yml up -d
+    - name: Verificar contenedores en ejecución
+      run: docker ps
