@@ -25,7 +25,7 @@ jobs:
         echo "Último mensaje de commit: $(git log -1 --pretty=%B)"
     - name: Extraer versión del mensaje de commit
       run: |
-        VERSION_TAG=$(git log -1 --pretty=%B | grep -oE 'v[0-9]+\.[0-9]+\.[0-9]+') || echo "No se encontró la versión en el commit"
+        VERSION_TAG=$(git log -1 --pretty=%B | grep -oE 'v[0-9]+(\.[0-9]+)+') || echo "No se encontró la versión en el commit"
         if [ "$VERSION_TAG" == "No se encontró la versión en el commit" ]; then
           echo "$VERSION_TAG"
           exit 1
