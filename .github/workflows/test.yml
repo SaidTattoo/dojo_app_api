@@ -9,7 +9,7 @@ jobs:
     steps:
     - name: Imprimir PATH
       run: echo $PATH
-    - name: Ejecutar comando LS v2
+    - name: Ejecutar comando LS v2 s
       run: |
         cd ~/Escritorio/deploy
         ls -l
