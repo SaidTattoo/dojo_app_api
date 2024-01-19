@@ -9,6 +9,8 @@ jobs:
   run-ls:
     runs-on: self-hosted
     steps:
+    - name: Checkout código
+      uses: actions/checkout@v2
     - name: Imprimir PATH
       run: echo $PATH
     - name: Imprimir mensaje de commit y comprobar versión
