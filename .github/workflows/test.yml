@@ -9,7 +9,7 @@ jobs:
   run-ls:
     runs-on: self-hosted
     steps:
-    - name: Checkout código
+    - name: Checkout código 2 
       uses: actions/checkout@v2
     - name: Imprimir PATH
       run: echo $PATH
