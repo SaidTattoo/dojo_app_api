@@ -1,7 +1,9 @@
 name: Ejecución Manual de LS
 
 on:
-  workflow_dispatch:
+  push:
+    branches:
+      - main
 
 jobs:
   run-ls:
