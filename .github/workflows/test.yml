@@ -13,7 +13,7 @@ jobs:
       run: echo $PATH
     - name: Ejecutar comando LS v2
       run: |
-        cd ~/Escritorio/deploy2
+        cd ~/Escritorio/deploy
         ls -l
     - name: Imprimir mensaje del último commit
       run: git log -1 --pretty=%B
