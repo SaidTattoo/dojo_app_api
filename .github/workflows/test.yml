@@ -5,7 +5,7 @@ on:
 
 jobs:
   run-ls:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     steps:
     - name: Imprimir PATH
       run: echo $PATH
