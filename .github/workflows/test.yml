@@ -17,5 +17,5 @@ jobs:
         sed -i "s|image: gcr.io/road-321321/sigmamx:v.*|image: gcr.io/road-321321/sigmamx:${VERSION_TAG}|g" "${FILE_PATH}"
     - name: Imprimir PATH
       run: echo $PATH
-    - name: Ejecutar comando LS
+    - name: Ejecutar comando LS v2
       run: ls -l
