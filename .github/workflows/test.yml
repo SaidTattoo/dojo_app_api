@@ -6,34 +6,45 @@ on:
       - main
 
 jobs:
-  run-ls:
+  build-deploy-run:
     runs-on: self-hosted
     steps:
-    - name: Checkout código 2 
+    - name: Checkout código
       uses: actions/checkout@v2
+
     - name: Imprimir PATH
       run: echo $PATH
-    - name: Imprimir mensaje de commit y comprobar versión
-      run: |
-        echo "Mensaje de commit:"
-        git log -1 --pretty=%B
-        echo "Versión extraída:"
-        git log -1 --pretty=%B | grep -oE 'v[0-9]+\.[0-9]+\.[0-9]+'
-    - name: Imprimir la rama actual y el último mensaje de commit
-      run: |
-        echo "Rama actual: $(git branch --show-current)"
-        echo "Último mensaje de commit: $(git log -1 --pretty=%B)"
+
     - name: Extraer versión del mensaje de commit
+      id: extract_version
       run: |
         VERSION_TAG=$(git log -1 --pretty=%B | grep -oE 'v[0-9]+(\.[0-9]+)+') || echo "No se encontró la versión en el commit"
+        echo "VERSION_TAG=${VERSION_TAG}" >> $GITHUB_ENV
         if [ "$VERSION_TAG" == "No se encontró la versión en el commit" ]; then
           echo "$VERSION_TAG"
           exit 1
         fi
+
+    - name: Construir imagen de Docker
+      run: |
+        docker build -t gcr.io/road-321321/sigmamx:${{ env.VERSION_TAG }} .
+
+    - name: Configurar credenciales de GCR
+      run: |
+        echo "${{ secrets.GCLOUD_SERVICE_KEY }}" | docker login -u _json_key --password-stdin https://gcr.io
+
+    - name: Subir imagen a GCR
+      run: |
+        docker push gcr.io/road-321321/sigmamx:${{ env.VERSION_TAG }}
+
+    - name: Actualizar archivo docker-compose.yml
+      run: |
         FILE_PATH=~/Escritorio/deploy/docker-compose.yml
-        sed -i "s|image: gcr.io/road-321321/sigmamx:v.*|image: gcr.io/road-321321/sigmamx:$VERSION_TAG|g" "$FILE_PATH"
+        sed -i "s|image: gcr.io/road-321321/sigmamx:v.*|image: gcr.io/road-321321/sigmamx:${{ env.VERSION_TAG }}|g" "$FILE_PATH"
+
     - name: Iniciar servicios con Docker Compose
       run: |
         docker-compose -f ~/Escritorio/deploy/docker-compose.yml up -d
+
     - name: Verificar contenedores en ejecución
       run: docker ps
